@@ -304,8 +304,8 @@ function spawnBoss() {
     y: -140,
     targetY: 120,
     vx: 3,
-    w: canvas.width * 0.5,
-    h: 160 * s,
+    w: canvas.width * 0.5 * (isPortraitMobile() ? 0.7 : 1),
+    h: 160 * s * (isPortraitMobile() ? 0.7 : 1),
     speed: 2,
     hp: 100,
     maxHp: 100,
@@ -348,9 +348,9 @@ function bossAttack(boss) {
         type: "bossBullet",
         x: boss.x,
         y: boss.y + boss.h / 2,
-        vx: Math.sin(a) * 5,
-        vy: 7,
-        r: 8
+        vx: Math.sin(a) * (isPortraitMobile() ? 3 : 5),
+        vy: isPortraitMobile() ? 4.5 : 7,
+        r: isPortraitMobile() ? 5 : 8
       });
     }
 
