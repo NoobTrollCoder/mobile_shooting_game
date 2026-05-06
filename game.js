@@ -140,11 +140,13 @@ initBackground();
 
 // ===== 初期化 =====
 function resetGame() {
+  const s = sizeScale();
+
   player = {
     x: canvas.width / 2,
     y: canvas.height - 120,
-    w: 44,
-    h: 40,
+    w: 44 * s,
+    h: 40 * s,
     speed: 7
   };
 
@@ -285,8 +287,8 @@ function spawnEnemy() {
       w: 130 * s,
       h: 76 * s,
       speed: 1.0,
-      hp: 15,
-      maxHp: 15,
+      hp: 10,
+      maxHp: 10,
       color: "#ff3c3c"
     });
   }
