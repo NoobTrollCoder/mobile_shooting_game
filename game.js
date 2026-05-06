@@ -10,8 +10,17 @@ function isPortraitMobile() {
   return canvas.width < canvas.height && canvas.width < 600;
 }
 
+/*
 function sizeScale() {
   return isPortraitMobile() ? 0.65 : 1.0;
+}
+*/
+
+function sizeScale() {
+  if (window.innerWidth <= 600) {
+    return 0.3;
+  }
+  return 1.0;
 }
 
 function initBackground() {
@@ -788,12 +797,6 @@ function draw() {
   drawBackground();
 
   if (state === STATE_TITLE) {
-    if (canvas.width < canvas.height) {
-        ctx.fillStyle = "white";
-        ctx.font = "22px sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText("横画面でプレイしてください", canvas.width / 2, canvas.height * 0.75);
-    }
     ctx.fillStyle = "white";
     ctx.font = "38px sans-serif";
     ctx.textAlign = "center";
