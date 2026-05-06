@@ -18,7 +18,7 @@ function sizeScale() {
 
 function sizeScale() {
   if (window.innerWidth <= 600) {
-    return 1.0;
+    return 0.6;
   }
   return 1.0;
 }
