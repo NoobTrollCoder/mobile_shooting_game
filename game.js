@@ -5,6 +5,15 @@ const ctx = canvas.getContext("2d");
 let stars = [];
 let planets = [];
 
+// smart phone 用
+function isPortraitMobile() {
+  return canvas.width < canvas.height && canvas.width < 600;
+}
+
+function sizeScale() {
+  return isPortraitMobile() ? 0.65 : 1.0;
+}
+
 function initBackground() {
   stars = [];
   for (let i = 0; i < 120; i++) {
@@ -233,14 +242,15 @@ function handleCommand(cmd) {
 // ===== 敵生成 =====
 function spawnEnemy() {
   const r = Math.random();
+  const s = sizeScale();
 
   if (r < 0.70) {
     enemies.push({
       type: "yellow",
       x: Math.random() * (canvas.width - 80) + 40,
       y: -40,
-      w: 56,
-      h: 32,
+      w: 56 * s,
+      h: 32 * s,
       speed: 2.2,
       hp: 1,
       maxHp: 1,
@@ -251,8 +261,8 @@ function spawnEnemy() {
       type: "blue",
       x: Math.random() * (canvas.width - 100) + 50,
       y: -60,
-      w: 82,
-      h: 48,
+      w: 82 * s,
+      h: 48 * s,
       speed: 1.6,
       hp: 3,
       maxHp: 3,
@@ -263,8 +273,8 @@ function spawnEnemy() {
       type: "red",
       x: Math.random() * (canvas.width - 140) + 70,
       y: -90,
-      w: 130,
-      h: 76,
+      w: 130 * s,
+      h: 76 * s,
       speed: 1.0,
       hp: 15,
       maxHp: 15,
@@ -275,6 +285,7 @@ function spawnEnemy() {
 
 // ===== ボス生成 =====
 function spawnBoss() {
+  const s = sizeScale();
   enemies = [];
   enemyBeams = [];
 
@@ -285,7 +296,7 @@ function spawnBoss() {
     targetY: 120,
     vx: 3,
     w: canvas.width * 0.5,
-    h: 160,
+    h: 160 * s,
     speed: 2,
     hp: 100,
     maxHp: 100,
@@ -693,6 +704,7 @@ function drawEnemy(e) {
   }
 
   else {
+    const wing = 18 * sizeScale();
     // 通常敵：宇宙船っぽい楕円＋翼
     ctx.fillStyle = e.color;
 
@@ -703,14 +715,14 @@ function drawEnemy(e) {
     // 左右の翼
     ctx.beginPath();
     ctx.moveTo(x - w / 2, y);
-    ctx.lineTo(x - w / 2 - 18, y + h / 2);
+    ctx.lineTo(x - w / 2 - wing, y + h / 2);
     ctx.lineTo(x - w / 5, y + h / 3);
     ctx.closePath();
     ctx.fill();
 
     ctx.beginPath();
     ctx.moveTo(x + w / 2, y);
-    ctx.lineTo(x + w / 2 + 18, y + h / 2);
+    ctx.lineTo(x + w / 2 + wing, y + h / 2);
     ctx.lineTo(x + w / 5, y + h / 3);
     ctx.closePath();
     ctx.fill();
