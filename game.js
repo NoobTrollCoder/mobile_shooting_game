@@ -18,7 +18,7 @@ function sizeScale() {
 
 function sizeScale() {
   if (window.innerWidth <= 600) {
-    return 0.6;
+    return 1.0;
   }
   return 1.0;
 }
@@ -617,12 +617,12 @@ function drawBackground() {
 
 function drawPlayer() {
   const s = sizeScale();
-  
+
   ctx.fillStyle = "#00ff88";
   ctx.beginPath();
-  ctx.moveTo(player.x, player.y - 24);
-  ctx.lineTo(player.x - 22, player.y + 20);
-  ctx.lineTo(player.x + 22, player.y + 20);
+  ctx.moveTo(player.x, player.y - 24 * s);
+  ctx.lineTo(player.x - 22 * s, player.y + 20 * s);
+  ctx.lineTo(player.x + 22 * s, player.y + 20 * s);
   ctx.closePath();
   ctx.fill();
 }
