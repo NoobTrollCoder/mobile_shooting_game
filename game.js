@@ -147,7 +147,7 @@ function resetGame() {
   bossAttackCount = 0;
 
   // boss debug
-  spawnBoss()
+  //spawnBoss()
 }
 
 resetGame();
@@ -776,6 +776,12 @@ function draw() {
   drawBackground();
 
   if (state === STATE_TITLE) {
+    if (canvas.width < canvas.height) {
+        ctx.fillStyle = "white";
+        ctx.font = "22px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("横画面でプレイしてください", canvas.width / 2, canvas.height * 0.75);
+    }
     ctx.fillStyle = "white";
     ctx.font = "38px sans-serif";
     ctx.textAlign = "center";
