@@ -18,7 +18,7 @@ function sizeScale() {
 
 function sizeScale() {
   if (window.innerWidth <= 600) {
-    return 0.3;
+    return 0.6;
   }
   return 1.0;
 }
@@ -616,6 +616,8 @@ function drawBackground() {
 }
 
 function drawPlayer() {
+  const s = sizeScale();
+  
   ctx.fillStyle = "#00ff88";
   ctx.beginPath();
   ctx.moveTo(player.x, player.y - 24);
